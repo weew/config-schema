@@ -18,6 +18,13 @@ interface IArrayNode extends IChainNode {
     function max($max);
 
     /**
+     * @param int $length
+     *
+     * @return IArrayNode
+     */
+    function length($length);
+
+    /**
      * @param array $values
      *
      * @return IArrayNode

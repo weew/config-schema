@@ -10,12 +10,12 @@ interface INode extends IChainNode {
      *
      * @return INode
      */
-    function addConstraint(IConstraint $constraint);
+    function constraint(IConstraint $constraint);
 
     /**
      * @param IConstraint[] $constraints
      *
      * @return INode
      */
-    function addConstraints(array $constraints);
+    function constraints(array $constraints);
 }

@@ -6,12 +6,16 @@ use Weew\ConfigSchema\IConfigSchema;
 use Weew\Validator\Constraints\AllowedConstraint;
 use Weew\Validator\Constraints\AlphaConstraint;
 use Weew\Validator\Constraints\AlphaNumericConstraint;
+use Weew\Validator\Constraints\EmailConstraint;
 use Weew\Validator\Constraints\ForbiddenConstraint;
+use Weew\Validator\Constraints\LengthConstraint;
 use Weew\Validator\Constraints\MaxLengthConstraint;
 use Weew\Validator\Constraints\MinLengthConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
 use Weew\Validator\Constraints\RegexConstraint;
 use Weew\Validator\Constraints\StringConstraint;
+use Weew\Validator\Constraints\UrlConstraint;
+use Weew\Validator\IConstraint;
 
 class StringNode extends Node implements IStringNode {
     /**
@@ -24,7 +28,7 @@ class StringNode extends Node implements IStringNode {
     public function __construct(IConfigSchema $schema, $key, $message = null) {
         parent::__construct($schema, $key);
 
-        $this->addConstraints([
+        $this->constraints([
             new NotNullConstraint($message),
             new StringConstraint(),
         ]);
@@ -36,7 +40,7 @@ class StringNode extends Node implements IStringNode {
      * @return IStringNode
      */
     public function min($min) {
-        return $this->addConstraint(new MinLengthConstraint($min));
+        return $this->constraint(new MinLengthConstraint($min));
     }
 
     /**
@@ -45,21 +49,44 @@ class StringNode extends Node implements IStringNode {
      * @return IStringNode
      */
     public function max($max) {
-        return $this->addConstraint(new MaxLengthConstraint($max));
+        return $this->constraint(new MaxLengthConstraint($max));
+    }
+
+    /**
+     * @param int $length
+     *
+     * @return IStringNode
+     */
+    public function length($length) {
+        return $this->constraint(new LengthConstraint($length));
+    }
+
+    /**
+     * @return IStringNode
+     */
+    public function email() {
+        return $this->constraint(new EmailConstraint());
+    }
+
+    /**
+     * @return IStringNode
+     */
+    public function url() {
+        return $this->constraint(new UrlConstraint());
     }
 
     /**
      * @return IStringNode
      */
     public function alpha() {
-        return $this->addConstraint(new AlphaConstraint());
+        return $this->constraint(new AlphaConstraint());
     }
 
     /**
      * @return IStringNode
      */
     public function alphanumeric() {
-        return $this->addConstraint(new AlphaNumericConstraint());
+        return $this->constraint(new AlphaNumericConstraint());
     }
 
     /**
@@ -68,7 +95,7 @@ class StringNode extends Node implements IStringNode {
      * @return IStringNode
      */
     public function matches($regex) {
-        return $this->addConstraint(new RegexConstraint($regex));
+        return $this->constraint(new RegexConstraint($regex));
     }
 
     /**
@@ -77,7 +104,7 @@ class StringNode extends Node implements IStringNode {
      * @return IStringNode
      */
     public function allowed(array $values) {
-        return $this->addConstraint(new AllowedConstraint($values));
+        return $this->constraint(new AllowedConstraint($values));
     }
 
     /**
@@ -86,6 +113,6 @@ class StringNode extends Node implements IStringNode {
      * @return IStringNode
      */
     public function forbidden(array $values) {
-        return $this->addConstraint(new ForbiddenConstraint($values));
+        return $this->constraint(new ForbiddenConstraint($values));
     }
 }

@@ -73,13 +73,13 @@ class ConfigSchemaSpec extends ObjectBehavior {
     function it_adds_constraint(IValidator $validator) {
         $constraint = new NotNullConstraint();
         $validator->addConstraint('key', $constraint)->shouldBeCalled();
-        $this->addConstraint('key', $constraint);
+        $this->constraint('key', $constraint);
     }
 
     function it_adds_constraints(IValidator $validator) {
         $constraints = [new NotNullConstraint()];
         $validator->addConstraints('key', $constraints)->shouldBeCalled();
-        $this->addConstraints('key', $constraints);
+        $this->constraints('key', $constraints);
     }
 
     function it_checks(

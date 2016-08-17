@@ -6,6 +6,7 @@ use Weew\ConfigSchema\IConfigSchema;
 use Weew\Validator\Constraints\AllowedSubsetConstraint;
 use Weew\Validator\Constraints\ArrayConstraint;
 use Weew\Validator\Constraints\ForbiddenSubsetConstraint;
+use Weew\Validator\Constraints\LengthConstraint;
 use Weew\Validator\Constraints\MaxLengthConstraint;
 use Weew\Validator\Constraints\MinLengthConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
@@ -21,7 +22,7 @@ class ArrayNode extends Node implements IArrayNode {
     public function __construct(IConfigSchema $schema, $key, $message = null) {
         parent::__construct($schema, $key);
 
-        $this->addConstraints([
+        $this->constraints([
             new NotNullConstraint($message),
             new ArrayConstraint(),
         ]);
@@ -33,7 +34,7 @@ class ArrayNode extends Node implements IArrayNode {
      * @return IArrayNode
      */
     public function min($min) {
-        return $this->addConstraint(
+        return $this->constraint(
             new MinLengthConstraint($min)
         );
     }
@@ -44,8 +45,19 @@ class ArrayNode extends Node implements IArrayNode {
      * @return IArrayNode
      */
     public function max($max) {
-        return $this->addConstraint(
+        return $this->constraint(
             new MaxLengthConstraint($max)
+        );
+    }
+
+    /**
+     * @param int $length
+     *
+     * @return IArrayNode
+     */
+    public function length($length) {
+        return $this->constraint(
+            new LengthConstraint($length)
         );
     }
 
@@ -55,7 +67,7 @@ class ArrayNode extends Node implements IArrayNode {
      * @return IArrayNode
      */
     public function allowed(array $values) {
-        return $this->addConstraint(
+        return $this->constraint(
             new AllowedSubsetConstraint($values)
         );
     }
@@ -66,7 +78,7 @@ class ArrayNode extends Node implements IArrayNode {
      * @return IArrayNode
      */
     public function forbidden(array $values) {
-        return $this->addConstraint(
+        return $this->constraint(
             new ForbiddenSubsetConstraint($values)
         );
     }

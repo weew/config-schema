@@ -15,7 +15,7 @@ use Weew\Validator\Constraints\NotNullConstraint;
  */
 class ValueNodeSpec extends ObjectBehavior {
     function let(IConfigSchema $schema) {
-        $schema->addConstraint('key', new NotNullConstraint('message'))
+        $schema->constraint('key', new NotNullConstraint('message'))
             ->shouldBeCalled();
 
         $this->beConstructedWith($schema, 'key', 'message');
@@ -27,13 +27,13 @@ class ValueNodeSpec extends ObjectBehavior {
     }
 
     function it_adds_allowed_constraint(IConfigSchema $schema) {
-        $schema->addConstraint('key', new AllowedConstraint([1, 2]))
+        $schema->constraint('key', new AllowedConstraint([1, 2]))
             ->shouldBeCalled();
         $this->allowed([1, 2])->shouldBe($this);
     }
 
     function it_adds_forbidden_constraint(IConfigSchema $schema) {
-        $schema->addConstraint('key', new ForbiddenConstraint([1, 2]))
+        $schema->constraint('key', new ForbiddenConstraint([1, 2]))
             ->shouldBeCalled();
         $this->forbidden([1, 2])->shouldBe($this);
     }

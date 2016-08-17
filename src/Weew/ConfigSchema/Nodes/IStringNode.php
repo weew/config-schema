@@ -2,6 +2,8 @@
 
 namespace Weew\ConfigSchema\Nodes;
 
+use Weew\Validator\IConstraint;
+
 interface IStringNode extends IChainNode {
     /**
      * @param int $min
@@ -16,6 +18,23 @@ interface IStringNode extends IChainNode {
      * @return IStringNode
      */
     function max($max);
+
+    /**
+     * @param int $length
+     *
+     * @return IStringNode
+     */
+    function length($length);
+
+    /**
+     * @return IStringNode
+     */
+    function email();
+
+    /**
+     * @return IStringNode
+     */
+    function url();
 
     /**
      * @return IStringNode

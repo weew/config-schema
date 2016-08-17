@@ -106,13 +106,13 @@ class NodeSpec extends ObjectBehavior {
 
     function it_adds_constraint(IConfigSchema $schema) {
         $constraint = new NotNullConstraint();
-        $schema->addConstraint('key', $constraint)->shouldBeCalled();
-        $this->addConstraint($constraint)->shouldBe($this);
+        $schema->constraint('key', $constraint)->shouldBeCalled();
+        $this->constraint($constraint)->shouldBe($this);
     }
 
     function it_adds_constraints(IConfigSchema $schema) {
         $constraints = [new NotNullConstraint()];
-        $schema->addConstraints('key', $constraints)->shouldBeCalled();
-        $this->addConstraints($constraints)->shouldBe($this);
+        $schema->constraints('key', $constraints)->shouldBeCalled();
+        $this->constraints($constraints)->shouldBe($this);
     }
 }

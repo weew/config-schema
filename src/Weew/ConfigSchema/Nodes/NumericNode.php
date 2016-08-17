@@ -21,7 +21,7 @@ class NumericNode extends Node implements INumericNode {
     public function __construct(IConfigSchema $schema, $key, $message = null) {
         parent::__construct($schema, $key);
 
-        $this->addConstraints([
+        $this->constraints([
             new NotNullConstraint($message),
             new NumericConstraint(),
         ]);
@@ -33,7 +33,7 @@ class NumericNode extends Node implements INumericNode {
      * @return INumericNode
      */
     public function min($min) {
-        return $this->addConstraint(
+        return $this->constraint(
             new MinConstraint($min)
         );
     }
@@ -44,7 +44,7 @@ class NumericNode extends Node implements INumericNode {
      * @return INumericNode
      */
     public function max($max) {
-        return $this->addConstraint(
+        return $this->constraint(
             new MaxConstraint($max)
         );
     }
@@ -55,7 +55,7 @@ class NumericNode extends Node implements INumericNode {
      * @return INumericNode
      */
     public function allowed(array $values) {
-        return $this->addConstraint(
+        return $this->constraint(
             new AllowedConstraint($values)
         );
     }
@@ -66,7 +66,7 @@ class NumericNode extends Node implements INumericNode {
      * @return INumericNode
      */
     public function forbidden(array $values) {
-        return $this->addConstraint(
+        return $this->constraint(
             new ForbiddenConstraint($values)
         );
     }

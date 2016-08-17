@@ -12,7 +12,7 @@ interface IConfigSchema extends IChainNode {
      *
      * @return IConfigSchema
      */
-    function addConstraint($key, IConstraint $constraint);
+    function constraint($key, IConstraint $constraint);
 
     /**
      * @param string $key
@@ -20,5 +20,5 @@ interface IConfigSchema extends IChainNode {
      *
      * @return IConfigSchema
      */
-    function addConstraints($key, array $constraints);
+    function constraints($key, array $constraints);
 }

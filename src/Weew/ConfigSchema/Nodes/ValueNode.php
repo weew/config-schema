@@ -18,7 +18,7 @@ class ValueNode extends Node implements IValueNode {
     public function __construct(IConfigSchema $schema, $key, $message = null) {
         parent::__construct($schema, $key);
 
-        $this->addConstraint(
+        $this->constraint(
             new NotNullConstraint($message)
         );
     }
@@ -29,7 +29,7 @@ class ValueNode extends Node implements IValueNode {
      * @return IValueNode
      */
     public function allowed(array $values) {
-        return $this->addConstraint(new AllowedConstraint($values));
+        return $this->constraint(new AllowedConstraint($values));
     }
 
     /**
@@ -38,6 +38,6 @@ class ValueNode extends Node implements IValueNode {
      * @return IValueNode
      */
     public function forbidden(array $values) {
-        return $this->addConstraint(new ForbiddenConstraint($values));
+        return $this->constraint(new ForbiddenConstraint($values));
     }
 }

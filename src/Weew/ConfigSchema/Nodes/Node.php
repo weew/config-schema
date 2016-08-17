@@ -107,8 +107,8 @@ class Node implements INode {
      *
      * @return $this
      */
-    public function addConstraint(IConstraint $constraint) {
-        $this->schema->addConstraint($this->key, $constraint);
+    public function constraint(IConstraint $constraint) {
+        $this->schema->constraint($this->key, $constraint);
 
         return $this;
     }
@@ -118,8 +118,8 @@ class Node implements INode {
      *
      * @return $this
      */
-    public function addConstraints(array $constraints) {
-        $this->schema->addConstraints($this->key, $constraints);
+    public function constraints(array $constraints) {
+        $this->schema->constraints($this->key, $constraints);
 
         return $this;
     }

@@ -143,7 +143,7 @@ class ConfigSchema implements IConfigSchema {
      *
      * @return IConfigSchema
      */
-    public function addConstraint($key, IConstraint $constraint) {
+    public function constraint($key, IConstraint $constraint) {
         $this->validator->addConstraint($key, $constraint);
 
         return $this;
@@ -155,7 +155,7 @@ class ConfigSchema implements IConfigSchema {
      *
      * @return IConfigSchema
      */
-    public function addConstraints($key, array $constraints) {
+    public function constraints($key, array $constraints) {
         $this->validator->addConstraints($key, $constraints);
 
         return $this;

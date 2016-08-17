@@ -17,7 +17,7 @@ class BooleanNode extends Node implements IBooleanNode {
     public function __construct(IConfigSchema $schema, $key, $message = null) {
         parent::__construct($schema, $key);
 
-        $this->addConstraints([
+        $this->constraints([
             new NotNullConstraint($message),
             new BooleanConstraint(),
         ]);

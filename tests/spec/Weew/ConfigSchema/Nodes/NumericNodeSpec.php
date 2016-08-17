@@ -18,7 +18,7 @@ use Weew\Validator\Constraints\NumericConstraint;
  */
 class NumericNodeSpec extends ObjectBehavior {
     function let(IConfigSchema $schema) {
-        $schema->addConstraints('key', [
+        $schema->constraints('key', [
             new NotNullConstraint('message'),
             new NumericConstraint(),
         ])->shouldBeCalled();
@@ -32,23 +32,23 @@ class NumericNodeSpec extends ObjectBehavior {
     }
 
     function it_adds_min_constraint(IConfigSchema $schema) {
-        $schema->addConstraint('key', new MinConstraint(10))->shouldBeCalled();
+        $schema->constraint('key', new MinConstraint(10))->shouldBeCalled();
         $this->min(10)->shouldBe($this);
     }
 
     function it_adds_max_constraint(IConfigSchema $schema) {
-        $schema->addConstraint('key', new MaxConstraint(10))->shouldBeCalled();
+        $schema->constraint('key', new MaxConstraint(10))->shouldBeCalled();
         $this->max(10)->shouldBe($this);
     }
 
     function it_adds_allowed_constraint(IConfigSchema $schema) {
-        $schema->addConstraint('key', new AllowedConstraint([1, 2]))
+        $schema->constraint('key', new AllowedConstraint([1, 2]))
             ->shouldBeCalled();
         $this->allowed([1, 2])->shouldBe($this);
     }
 
     function it_adds_forbidden_constraint(IConfigSchema $schema) {
-        $schema->addConstraint('key', new ForbiddenConstraint([1, 2]))
+        $schema->constraint('key', new ForbiddenConstraint([1, 2]))
             ->shouldBeCalled();
         $this->forbidden([1, 2])->shouldBe($this);
     }
