@@ -70,6 +70,12 @@ class ConfigSchemaSpec extends ObjectBehavior {
             ->shouldHaveType($node);
     }
 
+    function it_has_array_values() {
+        $node = new StringNode($this->getWrappedObject(), 'key.*', 'message');
+        $this->hasArrayValues('key', 'message')
+            ->shouldHaveType($node);
+    }
+
     function it_adds_constraint(IValidator $validator) {
         $constraint = new NotNullConstraint();
         $validator->addConstraint('key', $constraint)->shouldBeCalled();

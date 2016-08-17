@@ -80,7 +80,7 @@ class NodeSpec extends ObjectBehavior {
             ->shouldHaveType($node);
     }
 
-    function it_calls_has_number_keys_on_schema(
+    function it_calls_has_array_keys_on_schema(
         IConfigSchema $schema,
         IStringNode $node
     ) {
@@ -88,6 +88,17 @@ class NodeSpec extends ObjectBehavior {
             ->shouldBeCalled()
             ->willReturn($node);
         $this->hasArrayKeys('key', 'message')
+            ->shouldHaveType($node);
+    }
+
+    function it_calls_has_array_values_on_schema(
+        IConfigSchema $schema,
+        IStringNode $node
+    ) {
+        $schema->hasArrayValues('key', 'message')
+            ->shouldBeCalled()
+            ->willReturn($node);
+        $this->hasArrayValues('key', 'message')
             ->shouldHaveType($node);
     }
 

@@ -108,6 +108,18 @@ class ConfigSchema implements IConfigSchema {
     }
 
     /**
+     * @param string $key
+     * @param string $message
+     *
+     * @return StringNode
+     */
+    public function hasArrayValues($key, $message = null) {
+        $key = s('%s.*', $key);
+
+        return new StringNode($this, $key, $message);
+    }
+
+    /**
      * @throws ConfigValidationException
      */
     public function assert() {

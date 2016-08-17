@@ -89,6 +89,16 @@ class Node implements INode {
     }
 
     /**
+     * @param string $key
+     * @param string $message
+     *
+     * @return IStringNode
+     */
+    public function hasArrayValues($key, $message = null) {
+        return $this->schema->hasArrayValues($key, $message);
+    }
+
+    /**
      * @return null
      */
     public function assert() {
