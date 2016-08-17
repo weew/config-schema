@@ -4,7 +4,7 @@ namespace Weew\ConfigSchema\Nodes;
 
 use Weew\Validator\IConstraint;
 
-interface INode {
+interface INode extends IChainNode {
     /**
      * @param IConstraint $constraint
      *

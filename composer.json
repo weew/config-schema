@@ -20,7 +20,7 @@
     },
     "require": {
         "weew/config": "^1.18",
-        "weew/validator": "^3.5.1"
+        "weew/validator": "^3.6"
     },
     "require-dev": {
         "satooshi/php-coveralls": "^0.6.1",

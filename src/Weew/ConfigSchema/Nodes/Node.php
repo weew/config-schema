@@ -6,7 +6,7 @@ use Weew\ConfigSchema\IConfigSchema;
 use Weew\Validator\IConstraint;
 use Weew\Validator\IValidationResult;
 
-class Node implements INode, IChainNode {
+class Node implements INode {
     /**
      * @var IConfigSchema
      */
@@ -76,6 +76,16 @@ class Node implements INode, IChainNode {
      */
     public function hasArray($key, $message = null) {
         return $this->schema->hasArray($key, $message);
+    }
+
+    /**
+     * @param string $key
+     * @param string $message
+     *
+     * @return IStringNode
+     */
+    public function hasArrayKeys($key, $message = null) {
+        return $this->schema->hasArrayKeys($key, $message);
     }
 
     /**

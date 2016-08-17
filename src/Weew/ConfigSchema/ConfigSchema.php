@@ -96,18 +96,29 @@ class ConfigSchema implements IConfigSchema {
     }
 
     /**
+     * @param string $key
+     * @param string $message
+     *
+     * @return IStringNode
+     */
+    public function hasArrayKeys($key, $message = null) {
+        $key = s('%s.#', $key);
+
+        return new StringNode($this, $key, $message);
+    }
+
+    /**
      * @throws ConfigValidationException
      */
     public function assert() {
         $check = $this->check();
 
         if ($check->isFailed()) {
-            $message = 'Configuration is not valid: ';
+            $message = 'Configuration is not valid. ';
 
             foreach ($check->getErrors() as $index => $error) {
                 $message .= s(
-                    '#%s %s: %s ',
-                    $index,
+                    "\n%s: %s ",
                     $error->getSubject(),
                     $error->getMessage()
                 );

@@ -46,6 +46,14 @@ interface IChainNode {
     function hasArray($key, $message = null);
 
     /**
+     * @param string $key
+     * @param string $message
+     *
+     * @return IStringNode
+     */
+    function hasArrayKeys($key, $message = null);
+
+    /**
      * @return null
      */
     function assert();

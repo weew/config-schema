@@ -80,6 +80,17 @@ class NodeSpec extends ObjectBehavior {
             ->shouldHaveType($node);
     }
 
+    function it_calls_has_number_keys_on_schema(
+        IConfigSchema $schema,
+        IStringNode $node
+    ) {
+        $schema->hasArrayKeys('key', 'message')
+            ->shouldBeCalled()
+            ->willReturn($node);
+        $this->hasArrayKeys('key', 'message')
+            ->shouldHaveType($node);
+    }
+
     function it_calls_assert_on_schema(IConfigSchema $schema) {
         $schema->assert()->shouldBeCalled();
         $this->assert();
