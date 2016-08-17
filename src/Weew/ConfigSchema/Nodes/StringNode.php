@@ -15,7 +15,6 @@ use Weew\Validator\Constraints\NotNullConstraint;
 use Weew\Validator\Constraints\RegexConstraint;
 use Weew\Validator\Constraints\StringConstraint;
 use Weew\Validator\Constraints\UrlConstraint;
-use Weew\Validator\IConstraint;
 
 class StringNode extends Node implements IStringNode {
     /**

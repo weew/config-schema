@@ -2,7 +2,7 @@
 
 namespace Weew\ConfigSchema\Nodes;
 
-interface IValueNode extends IChainNode {
+interface IValueNode extends INode {
     /**
      * @param array $values
      *

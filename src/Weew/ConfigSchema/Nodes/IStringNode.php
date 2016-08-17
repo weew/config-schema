@@ -2,9 +2,7 @@
 
 namespace Weew\ConfigSchema\Nodes;
 
-use Weew\Validator\IConstraint;
-
-interface IStringNode extends IChainNode {
+interface IStringNode extends INode {
     /**
      * @param int $min
      *

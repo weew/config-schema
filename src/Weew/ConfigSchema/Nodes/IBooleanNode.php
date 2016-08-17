@@ -2,4 +2,4 @@
 
 namespace Weew\ConfigSchema\Nodes;
 
-interface IBooleanNode extends IChainNode {}
+interface IBooleanNode extends INode {}

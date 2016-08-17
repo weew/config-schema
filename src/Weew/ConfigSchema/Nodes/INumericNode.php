@@ -2,7 +2,7 @@
 
 namespace Weew\ConfigSchema\Nodes;
 
-interface INumericNode extends IChainNode {
+interface INumericNode extends INode {
     /**
      * @param int $min
      *
