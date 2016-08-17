@@ -1,0 +1,4 @@
+escrow:
+  name: escrow service
+  bank_accounts:
+    chf:
