@@ -16,4 +16,9 @@ interface IValueNode extends INode {
      * @return IValueNode
      */
     function forbidden(array $values);
+
+    /**
+     * @return IValueNode
+     */
+    function nullable();
 }

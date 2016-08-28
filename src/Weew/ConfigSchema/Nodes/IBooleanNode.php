@@ -2,4 +2,9 @@
 
 namespace Weew\ConfigSchema\Nodes;
 
-interface IBooleanNode extends INode {}
+interface IBooleanNode extends INode {
+    /**
+     * @return IBooleanNode
+     */
+    function nullable();
+}

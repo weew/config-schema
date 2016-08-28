@@ -8,6 +8,7 @@ use Weew\Validator\Constraints\ForbiddenConstraint;
 use Weew\Validator\Constraints\MaxConstraint;
 use Weew\Validator\Constraints\MinConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 use Weew\Validator\Constraints\NumericConstraint;
 
 class NumericNode extends Node implements INumericNode {
@@ -68,6 +69,15 @@ class NumericNode extends Node implements INumericNode {
     public function forbidden(array $values) {
         return $this->constraint(
             new ForbiddenConstraint($values)
+        );
+    }
+
+    /**
+     * @return INumericNode
+     */
+    public function nullable() {
+        return $this->constraint(
+            new NullableConstraint()
         );
     }
 }

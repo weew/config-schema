@@ -64,4 +64,9 @@ interface IStringNode extends INode {
      * @return IStringNode
      */
     function forbidden(array $values);
+
+    /**
+     * @return IStringNode
+     */
+    function nullable();
 }

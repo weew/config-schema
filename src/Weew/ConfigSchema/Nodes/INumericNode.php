@@ -30,4 +30,9 @@ interface INumericNode extends INode {
      * @return INumericNode
      */
     function forbidden(array $values);
+
+    /**
+     * @return INumericNode
+     */
+    function nullable();
 }

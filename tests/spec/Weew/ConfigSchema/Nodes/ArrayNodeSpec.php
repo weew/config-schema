@@ -13,6 +13,7 @@ use Weew\Validator\Constraints\LengthConstraint;
 use Weew\Validator\Constraints\MaxLengthConstraint;
 use Weew\Validator\Constraints\MinLengthConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 
 /**
  * @mixin ArrayNode
@@ -57,5 +58,11 @@ class ArrayNodeSpec extends ObjectBehavior {
         $schema->constraint('key', new ForbiddenSubsetConstraint([1, 2]))
             ->shouldBeCalled();
         $this->forbidden([1, 2])->shouldBe($this);
+    }
+
+    function it_adds_nullable_constraint(IConfigSchema $schema) {
+        $schema->constraint('key', new NullableConstraint())
+            ->shouldBeCalled();
+        $this->nullable();
     }
 }

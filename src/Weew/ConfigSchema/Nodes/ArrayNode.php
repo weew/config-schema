@@ -10,6 +10,7 @@ use Weew\Validator\Constraints\LengthConstraint;
 use Weew\Validator\Constraints\MaxLengthConstraint;
 use Weew\Validator\Constraints\MinLengthConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 
 class ArrayNode extends Node implements IArrayNode {
     /**
@@ -80,6 +81,15 @@ class ArrayNode extends Node implements IArrayNode {
     public function forbidden(array $values) {
         return $this->constraint(
             new ForbiddenSubsetConstraint($values)
+        );
+    }
+
+    /**
+     * @return IArrayNode
+     */
+    public function nullable() {
+        return $this->constraint(
+            new NullableConstraint()
         );
     }
 }

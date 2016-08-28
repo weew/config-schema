@@ -15,6 +15,7 @@ use Weew\Validator\Constraints\LengthConstraint;
 use Weew\Validator\Constraints\MaxLengthConstraint;
 use Weew\Validator\Constraints\MinLengthConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 use Weew\Validator\Constraints\RegexConstraint;
 use Weew\Validator\Constraints\StringConstraint;
 use Weew\Validator\Constraints\UrlConstraint;
@@ -93,5 +94,11 @@ class StringNodeSpec extends ObjectBehavior {
         $constraint = new NotNullConstraint();
         $schema->constraint('key', $constraint)->shouldBeCalled();
         $this->constraint($constraint)->shouldBe($this);
+    }
+
+    function it_adds_nullable_constraint(IConfigSchema $schema) {
+        $schema->constraint('key', new NullableConstraint())
+            ->shouldBeCalled();
+        $this->nullable();
     }
 }

@@ -37,4 +37,9 @@ interface IArrayNode extends INode {
      * @return IArrayNode
      */
     function forbidden(array $values);
+
+    /**
+     * @return IArrayNode
+     */
+    function nullable();
 }

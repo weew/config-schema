@@ -5,6 +5,7 @@ namespace Weew\ConfigSchema\Nodes;
 use Weew\ConfigSchema\IConfigSchema;
 use Weew\Validator\Constraints\BooleanConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 
 class BooleanNode extends Node implements IBooleanNode {
     /**
@@ -21,6 +22,15 @@ class BooleanNode extends Node implements IBooleanNode {
             new NotNullConstraint($message),
             new BooleanConstraint(),
         ]);
+    }
+
+    /**
+     * @return IBooleanNode
+     */
+    public function nullable() {
+        return $this->constraint(
+            new NullableConstraint()
+        );
     }
 }
 

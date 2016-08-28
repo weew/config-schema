@@ -6,6 +6,7 @@ use Weew\ConfigSchema\IConfigSchema;
 use Weew\Validator\Constraints\AllowedConstraint;
 use Weew\Validator\Constraints\ForbiddenConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 
 class ValueNode extends Node implements IValueNode {
     /**
@@ -39,5 +40,14 @@ class ValueNode extends Node implements IValueNode {
      */
     public function forbidden(array $values) {
         return $this->constraint(new ForbiddenConstraint($values));
+    }
+
+    /**
+     * @return IValueNode
+     */
+    public function nullable() {
+        return $this->constraint(
+            new NullableConstraint()
+        );
     }
 }

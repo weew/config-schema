@@ -11,6 +11,7 @@ use Weew\Validator\Constraints\ForbiddenConstraint;
 use Weew\Validator\Constraints\MaxConstraint;
 use Weew\Validator\Constraints\MinConstraint;
 use Weew\Validator\Constraints\NotNullConstraint;
+use Weew\Validator\Constraints\NullableConstraint;
 use Weew\Validator\Constraints\NumericConstraint;
 
 /**
@@ -51,5 +52,11 @@ class NumericNodeSpec extends ObjectBehavior {
         $schema->constraint('key', new ForbiddenConstraint([1, 2]))
             ->shouldBeCalled();
         $this->forbidden([1, 2])->shouldBe($this);
+    }
+
+    function it_adds_nullable_constraint(IConfigSchema $schema) {
+        $schema->constraint('key', new NullableConstraint())
+            ->shouldBeCalled();
+        $this->nullable();
     }
 }
