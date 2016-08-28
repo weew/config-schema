@@ -39,10 +39,11 @@ $schema
 ;
 ```
 
-After you've described your schema, you can either validate it, which return you an instance of `IValidationResult`, or assert it, which will throw an exception.
+After you've described your schema, you can either validate it, which will return you an instance of `IValidationResult`, or assert it, which will throw an exception.
 
 ```php
 $result = $schema->check();
+
 foreach ($result->getErrors() as $error) {
     echo $error->getSubject() . ' ' . $error->getMessage();
 }
